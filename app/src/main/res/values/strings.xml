@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">WeatherApp</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
+    <string name="back_to_login">Back to Login!</string>
+    <string name="register_here">Register Here!</string>
+    <string name="login">Login</string>
+    <string name="farm_track">Farm Track</string>
+</resources>
