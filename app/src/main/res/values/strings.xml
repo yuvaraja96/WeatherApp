@@ -8,4 +8,6 @@
     <string name="register_here">Register Here!</string>
     <string name="login">Login</string>
     <string name="farm_track">Farm Track</string>
+    <string name="forgot_password_click_here">Forgot Password? Click Here!</string>
+    <string name="reset_password">Reset Password</string>
 </resources>

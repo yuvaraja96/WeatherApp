@@ -80,7 +80,7 @@
         android:id="@+id/tvForgotPass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Forgot Password? Click Here!"
+        android:text="@string/forgot_password_click_here"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/progressBar"

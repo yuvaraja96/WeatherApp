@@ -33,13 +33,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         email = findViewById(R.id.txtEmail);
         pass = findViewById(R.id.txtPassword);
         login = findViewById(R.id.btnLogin);
         register = findViewById(R.id.tvRegister);
         forgotPass = findViewById(R.id.tvForgotPass);
         progressBar = findViewById(R.id.progressBar);
+
         firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        if(user!=null){
+            finish();
+            startActivity(new Intent(MainActivity.this, Home.class));
+        }
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
