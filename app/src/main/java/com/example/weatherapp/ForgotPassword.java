@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class ForgotPassword extends AppCompatActivity {
     private EditText email;
     private Button resetPass;
+    private TextView backLogin;
     private ProgressBar progressBar;
     private FirebaseAuth firebaseAuth;
 
@@ -29,6 +31,7 @@ public class ForgotPassword extends AppCompatActivity {
 
         email = findViewById(R.id.txtEmail);
         resetPass = findViewById(R.id.btnChangePass);
+        backLogin = findViewById(R.id.tvLogin);
         progressBar = findViewById(R.id.progressBar);
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -59,6 +62,14 @@ public class ForgotPassword extends AppCompatActivity {
                     });
 
                 }
+            }
+        });
+
+        backLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ForgotPassword.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }

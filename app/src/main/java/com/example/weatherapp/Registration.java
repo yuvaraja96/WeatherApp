@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -23,6 +26,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class Registration extends AppCompatActivity {
 
     private EditText name, email, pass;
+    private CheckBox viewPass;
     private Button register;
     private TextView backLogin;
     FirebaseAuth firebaseAuth;
@@ -36,6 +40,7 @@ public class Registration extends AppCompatActivity {
         name = findViewById(R.id.txtName);
         email = findViewById(R.id.txtEmail);
         pass = findViewById(R.id.txtPassword);
+        viewPass = findViewById(R.id.chkPassword);
         register = findViewById(R.id.btnRegister);
         backLogin = findViewById(R.id.tvLogin);
 
@@ -104,6 +109,17 @@ public class Registration extends AppCompatActivity {
             }
         });
 
+        viewPass.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    pass.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                }else{
+                    pass.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                }
+            }
+        });
+
         backLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,8 +127,6 @@ public class Registration extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
 
 
     }

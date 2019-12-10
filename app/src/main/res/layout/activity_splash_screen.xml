@@ -4,57 +4,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#A4F8E3C2"
-    tools:context=".ForgotPassword">
+    android:background="#F8E3C2"
+    tools:context=".SplashScreen">
 
     <TextView
-        android:id="@+id/tvLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/back_to_login"
+        android:id="@+id/tvAppName"
+        android:layout_width="241dp"
+        android:layout_height="74dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/cli_mate"
         android:textAlignment="center"
+        android:textAllCaps="false"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textSize="24sp"
+        android:textSize="52sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnChangePass"
-        app:layout_constraintVertical_bias="0.188" />
+        app:layout_constraintTop_toBottomOf="@+id/imgLogo"
+        app:layout_constraintVertical_bias="0.129" />
 
-    <EditText
-        android:id="@+id/txtEmail"
-        android:layout_width="332dp"
-        android:layout_height="55dp"
-        android:ems="10"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress"
-        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="219dp"
+        android:layout_height="230dp"
+        android:layout_centerInParent="true"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.228" />
+        app:layout_constraintVertical_bias="0.252" />
 
-    <Button
-        android:id="@+id/btnChangePass"
-        style="@android:style/Widget.Material.Light.Button"
-        android:layout_width="329dp"
-        android:layout_height="71dp"
-        android:background="@drawable/rounded_button"
-        android:backgroundTint=" #E95528"
-        android:text="@string/reset_password"
+    <TextView
+        android:id="@+id/tvWeather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/weather_forecast"
         android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.524"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEmail"
-        app:layout_constraintVertical_bias="0.235" />
+        app:layout_constraintTop_toBottomOf="@+id/tvAppName"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -64,6 +61,10 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/tvWeather"
+        app:layout_constraintVertical_bias="0.648" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

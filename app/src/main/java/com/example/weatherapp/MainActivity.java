@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -23,6 +26,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class MainActivity extends AppCompatActivity {
 
     private EditText email, pass;
+    private CheckBox viewPass;
     private Button login;
     private TextView register, forgotPass;
     private ProgressBar progressBar;
@@ -37,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         email = findViewById(R.id.txtEmail);
         pass = findViewById(R.id.txtPassword);
+        viewPass = findViewById(R.id.chkPassword);
         login = findViewById(R.id.btnLogin);
         register = findViewById(R.id.tvRegister);
         forgotPass = findViewById(R.id.tvForgotPass);
@@ -87,6 +92,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ForgotPassword.class);
                 startActivity(intent);
+            }
+        });
+
+        viewPass.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    pass.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                }else{
+                    pass.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                }
             }
         });
 
