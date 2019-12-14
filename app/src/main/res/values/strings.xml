@@ -10,11 +10,10 @@
     <string name="farm_track">Farm Track</string>
     <string name="forgot_password_click_here">Forgot Password? Click Here!</string>
     <string name="reset_password">Reset Password</string>
-    <string name="cli_mate">Cli-Mate</string>
+    <string name="weatherapp_name">WeatherApp</string>
     <string name="weather_schedule">Weather Schedule</string>
     <string name="menu">Menu</string>
     <string name="home">Home</string>
     <string name="todo">TODO</string>
     <string name="view_password">View Password</string>
-    <string name="weather_forecast">Weather Forecast</string>
 </resources>

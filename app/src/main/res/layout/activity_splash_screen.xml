@@ -9,14 +9,14 @@
 
     <TextView
         android:id="@+id/tvAppName"
-        android:layout_width="241dp"
-        android:layout_height="74dp"
+        android:layout_width="305dp"
+        android:layout_height="72dp"
         android:fontFamily="sans-serif"
-        android:text="@string/cli_mate"
+        android:text="@string/weatherapp_name"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textSize="52sp"
+        android:textSize="44sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,22 +37,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.252" />
 
-    <TextView
-        android:id="@+id/tvWeather"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/weather_forecast"
-        android:textAlignment="center"
-        android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAppName"
-        app:layout_constraintVertical_bias="0.0" />
-
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
@@ -63,8 +47,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvWeather"
-        app:layout_constraintVertical_bias="0.648" />
+        app:layout_constraintTop_toBottomOf="@+id/tvAppName" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

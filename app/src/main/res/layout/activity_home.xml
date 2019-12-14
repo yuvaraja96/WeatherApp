@@ -11,11 +11,14 @@
         android:id="@+id/imageView4"
         android:layout_width="61dp"
         android:layout_height="43dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:contentDescription="@string/todo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo"
-        tools:layout_editor_absoluteX="11dp" />
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/logo" />
 
     <Button
         android:id="@+id/btnSchedule"
