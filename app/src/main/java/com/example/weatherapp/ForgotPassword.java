@@ -1,8 +1,5 @@
 package com.example.weatherapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +8,9 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -45,18 +45,18 @@ public class ForgotPassword extends AppCompatActivity {
                     email.setError("Email required.");
                     progressBar.setVisibility(View.INVISIBLE);
 
-                } else{
+                } else {
                     firebaseAuth.sendPasswordResetEmail(uEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-                            if(task.isSuccessful()){
-                                Toast.makeText(ForgotPassword.this, "Email sent for password reset.",Toast.LENGTH_SHORT).show();
+                            if (task.isSuccessful()) {
+                                Toast.makeText(ForgotPassword.this, "Email sent for password reset.", Toast.LENGTH_SHORT).show();
                                 finish();
                                 Intent intent = new Intent(ForgotPassword.this, MainActivity.class);
                                 startActivity(intent);
-                            }else{
+                            } else {
                                 progressBar.setVisibility(View.INVISIBLE);
-                                Toast.makeText(ForgotPassword.this, "Email not sent. Please try again.",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ForgotPassword.this, "Email not sent. Please try again.", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });

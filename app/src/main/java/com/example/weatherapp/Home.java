@@ -1,15 +1,8 @@
 package com.example.weatherapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
-
 import android.app.AlertDialog;
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -21,6 +14,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+
 import com.google.firebase.auth.FirebaseAuth;
 
 @SuppressWarnings("ALL")
@@ -30,7 +27,7 @@ public class Home extends AppCompatActivity {
     private final int NOTIFICATION_ID = 001;
 
 
-    private Button farmTrack;
+    private Button farmTrack, menu, schedule;
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -39,16 +36,34 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
 
-
         farmTrack = findViewById(R.id.btnFarmTrack);
+        menu = findViewById(R.id.btnMenu);
+        schedule = findViewById(R.id.btnSchedule);
+
         firebaseAuth = FirebaseAuth.getInstance();
 
         farmTrack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    openUrl("http://192.168.8.108/");
+                openUrl("http://192.168.8.108/");
             }
         });
+
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Home.this, Catalog.class);
+                startActivity(i);
+            }
+        });
+
+        schedule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Home.this, Schedule.class));
+            }
+        });
+
     }
 
     @Override
@@ -62,9 +77,9 @@ public class Home extends AppCompatActivity {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        switch(item.getItemId()){
+        switch (item.getItemId()) {
 
-            case R.id.logoutMenu:{
+            case R.id.logoutMenu: {
                 //AlertDialog to verify exit app
                 builder.setMessage("Are you sure want to Logout?")
                         .setTitle("Logout")
@@ -76,7 +91,7 @@ public class Home extends AppCompatActivity {
                                 //Do logout
                                 firebaseAuth.signOut();
                                 finish();
-                                Intent intent = new Intent(Home.this,MainActivity.class);
+                                Intent intent = new Intent(Home.this, MainActivity.class);
                                 startActivity(intent);
                             }
                         })
@@ -93,7 +108,7 @@ public class Home extends AppCompatActivity {
             }
             return true;
 
-            case R.id.weatherAlert:{
+            case R.id.weatherAlert: {
                 //Enable WeatherAlert
                 builder.setMessage("Are you sure want to enable WeatherAlert?")
                         .setTitle("WeatherAlert")
@@ -103,7 +118,7 @@ public class Home extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 //Enabled WeatherAlert
-                                Toast.makeText(Home.this, "WeatherAlert Enabled",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Home.this, "WeatherAlert Enabled", Toast.LENGTH_SHORT).show();
 
                                 //Firebase code for weather changes
                                 ////////////////////////////////////
@@ -119,7 +134,7 @@ public class Home extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.cancel();
-                                Toast.makeText(Home.this, "WeatherAlert Disabled",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Home.this, "WeatherAlert Disabled", Toast.LENGTH_SHORT).show();
                             }
                         });
 
@@ -132,14 +147,14 @@ public class Home extends AppCompatActivity {
     }
 
 
-    public void openUrl(String url){
+    public void openUrl(String url) {
         Uri uri = Uri.parse(url);
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
     }
 
     //Notifications for Android 8.0 and below
-    public void displayNotification(){
+    public void displayNotification() {
 
         //Specify the Android 8.0 and above
         createNotificationChannel();
@@ -151,13 +166,13 @@ public class Home extends AppCompatActivity {
         builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
         NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
-        notificationManagerCompat.notify(NOTIFICATION_ID,builder.build());
+        notificationManagerCompat.notify(NOTIFICATION_ID, builder.build());
     }
 
     //Notifications for Android 8.0 and above
-    public void createNotificationChannel(){
+    public void createNotificationChannel() {
 
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
             CharSequence name = "Weather Notifications";
             String description = "Include all the weather notifications";
