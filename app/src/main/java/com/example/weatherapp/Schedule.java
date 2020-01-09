@@ -1,6 +1,7 @@
 package com.example.weatherapp;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -49,7 +50,7 @@ public class Schedule extends AppCompatActivity {
         airPressure = findViewById(R.id.airTv);
         btnReport = findViewById(R.id.btnReport);
 
-        btnReport.setOnClickListener(new View.OnClickListener() {
+        /*btnReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
@@ -62,6 +63,13 @@ public class Schedule extends AppCompatActivity {
                 } else {
                     savePdf();
                 }
+            }
+        });*/
+
+        btnReport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Schedule.this, Report.class));
             }
         });
 

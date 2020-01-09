@@ -14,17 +14,24 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 @SuppressWarnings("ALL")
 public class Home extends AppCompatActivity {
 
     private final String CHANNEL_ID = "Weather Notifications";
     private final int NOTIFICATION_ID = 001;
+    DatabaseReference reff;
 
 
     private Button farmTrack, menu, schedule;
@@ -122,10 +129,11 @@ public class Home extends AppCompatActivity {
 
                                 //Firebase code for weather changes
                                 ////////////////////////////////////
+                                weatherChanges();
 
                                 //Display Notifications
                                 //if sudden changes in weather --> displayNotification()
-                                displayNotification();
+                                //displayNotification();
 
                             }
                         })
@@ -151,6 +159,40 @@ public class Home extends AppCompatActivity {
         Uri uri = Uri.parse(url);
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
+    }
+
+    public void weatherChanges() {
+
+        reff = FirebaseDatabase.getInstance().getReference().child("201911041600").child("Second20");
+
+        reff.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String wd = dataSnapshot.child("WindDirection").child("Avg").getValue().toString();
+                wd = wd.substring(0, 3);
+
+                String ws = dataSnapshot.child("WindSpeed").child("Avg").getValue().toString();
+                ws = ws.substring(0, 3);
+
+                String humi = dataSnapshot.child("Humidity").getValue().toString();
+                humi = humi.substring(0, 3);
+
+                String temp = dataSnapshot.child("Temp").getValue().toString();
+                temp = temp.substring(0, 3);
+
+                String airP = dataSnapshot.child("AirPressure").getValue().toString();
+                airP = airP.substring(0, 5);
+
+                displayNotification();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+
+        });
     }
 
     //Notifications for Android 8.0 and below
