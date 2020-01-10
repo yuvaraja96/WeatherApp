@@ -42,8 +42,8 @@ import dmax.dialog.SpotsDialog;
 public class ItemDetail extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private static final int REQUEST_CODE = 1234;
-    final String API_GET_TOKEN = "http://192.168.8.155/braintree/main.php";
-    final String API_CHECK_OUT = "http://192.168.8.155/braintree/checkout.php";
+    final String API_GET_TOKEN = "http://172.16.8.247/braintree/main.php";
+    final String API_CHECK_OUT = "http://172.16.8.247/braintree/checkout.php";
     DatabaseReference reff;
     History history;
     TextView mTitle, mDes, mAmount;
