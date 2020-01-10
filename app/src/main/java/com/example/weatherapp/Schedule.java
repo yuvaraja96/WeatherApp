@@ -34,7 +34,7 @@ public class Schedule extends AppCompatActivity {
     private static final int STORAGE_CODE = 1000;
     DatabaseReference reff;
     TextView windDirection, windSpeed, humidity, temperature, airPressure;
-    Button btnReport;
+    Button btnReport, btnMinSpeed, btnMaxSpeed, btnAvgSpeed;
     private CalendarView mCalendarView;
 
     @Override
@@ -48,7 +48,10 @@ public class Schedule extends AppCompatActivity {
         humidity = findViewById(R.id.humidityTv);
         temperature = findViewById(R.id.tempTv);
         airPressure = findViewById(R.id.airTv);
-        btnReport = findViewById(R.id.btnReport);
+        btnReport = findViewById(R.id.btnTemp);
+        btnMinSpeed = findViewById(R.id.btnMin);
+        btnMaxSpeed = findViewById(R.id.btnMax);
+        btnAvgSpeed = findViewById(R.id.btnAvg);
 
         /*btnReport.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +73,27 @@ public class Schedule extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Schedule.this, Report.class));
+            }
+        });
+
+        btnAvgSpeed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Schedule.this, Average.class));
+            }
+        });
+
+        btnMinSpeed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Schedule.this, Min.class));
+            }
+        });
+
+        btnMaxSpeed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Schedule.this, Max.class));
             }
         });
 

@@ -7,6 +7,36 @@
     android:background="#A4F8E3C2"
     tools:context=".Schedule">
 
+    <Button
+        android:id="@+id/btnMax"
+        android:layout_width="136dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="48dp"
+        android:text="Max"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnMin" />
+
+    <Button
+        android:id="@+id/btnAvg"
+        android:layout_width="136dp"
+        android:layout_height="39dp"
+        android:text="Average"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnMax"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnTemp" />
+
+    <Button
+        android:id="@+id/btnMin"
+        android:layout_width="136dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="48dp"
+        android:text="Min"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/airTv" />
+
     <TextView
         android:id="@+id/airTv"
         android:layout_width="0dp"
@@ -105,8 +135,8 @@
 
     <CalendarView
         android:id="@+id/calendarView"
-        android:layout_width="330dp"
-        android:layout_height="323dp"
+        android:layout_width="310dp"
+        android:layout_height="282dp"
         android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -149,14 +179,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
-        android:id="@+id/btnReport"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="27dp"
-        android:text="Report"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/btnTemp"
+        android:layout_width="136dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="16dp"
+        android:text="Temperature"
+        app:layout_constraintEnd_toStartOf="@+id/btnMin"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/airTv" />
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
